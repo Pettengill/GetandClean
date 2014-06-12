@@ -9,25 +9,25 @@ Data can be accessed at: http://archive.ics.uci.edu/ml/datasets/Human+Activity+R
 
 The run_analysis.R script modfies the data in the following ways:  
 
-1.) It combines y_train.txt with y_test.txt to yeild a data frame (called Y_df) that has the dimensions 10299 x 1 listing the number of instances and the activity IDs, respectively. Activity IDs have values from 1 to 6. 
+1. It combines y_train.txt with y_test.txt to yeild a data frame (called Y_df) that has the dimensions 10299 x 1 listing the number of instances and the activity IDs, respectively. Activity IDs have values from 1 to 6. 
 
-2.) It combines X_train.txt with X_test.txt to yeild a data frame (called X_df) that has the diminsions 10299 x 561 which respresent the number of instances and the number of feature variables, respectively. Feature variables are normalized and bounded to values from -1 to 1.    
+2. It combines X_train.txt with X_test.txt to yeild a data frame (called X_df) that has the diminsions 10299 x 561 which respresent the number of instances and the number of feature variables, respectively. Feature variables are normalized and bounded to values from -1 to 1.    
 
-3.) It combines subject_train.txt with subject_test.txt to yeild a data frame (called subject) that has the dimensions 10299 x 1 listing the number of instances and subject IDs, respectively. Subject IDs have values from 1 to 30. The label subjectID is added to the subject data frame.     
+3. It combines subject_train.txt with subject_test.txt to yeild a data frame (called subject) that has the dimensions 10299 x 1 listing the number of instances and subject IDs, respectively. Subject IDs have values from 1 to 30. The label subjectID is added to the subject data frame.     
 
-4.) From the file features.txt, it extracts only feature variable names containing the mean and standard deviation (in the following format: -mean() or -std() ).   
+4. From the file features.txt, it extracts only feature variable names containing the mean and standard deviation (in the following format: -mean() or -std() ).   
 
-5.) It subsets the X_df data frame with only feature names containing the mean and standard deviation into a new X_df data frame with the dimensions 10299 x 66 with values. Labels in this data frame are formatted to lower case letters and the parentheses removed.     
+5. It subsets the X_df data frame with only feature names containing the mean and standard deviation into a new X_df data frame with the dimensions 10299 x 66 with values. Labels in this data frame are formatted to lower case letters and the parentheses removed.     
 
-6.) Activity labels found in activity_labels.txt are formatted to lower case letters and underscores are removed. These tidier activity labels (walking, walkingupstairs, walkingdownstairs, sitting, standing and laying) are applied to the Y_df. The label activity is added to Y_df.    
+6. Activity labels found in activity_labels.txt are formatted to lower case letters and underscores are removed. These tidier activity labels (walking, walkingupstairs, walkingdownstairs, sitting, standing and laying) are applied to the Y_df. The label activity is added to Y_df.    
 
-7.) The properly labeled subject, Y_df and X_df data frames are combined using the cbind function to yeild a data frame with the dimensions 10299 x 68 called combined. This table begins with the subject IDs in the first column, activity names listed in part 6.) in the second column and 66 columns of feature names in the general format: feature-mean-x, feature-std-y, etc.     
+7. The properly labeled subject, Y_df and X_df data frames are combined using the cbind function to yeild a data frame with the dimensions 10299 x 68 called combined. This table begins with the subject IDs in the first column, activity names listed in part 6 in the second column and 66 columns of feature names in the general format: feature-mean-x, feature-std-y, etc.     
 
-8.) The combined data frame is passed to a function that melts and recasts the data. During the recasting, the average of each feature value is calculated for each subject and each activity. A new data frame called tidy is created with the results of this function that has dimensions of 180 x 68. The first column is labeled subjectID, the second is labeled activity followed by the average for each feature variable in the last 66 columns.     
+8. The combined data frame is passed to a function that melts and recasts the data. During the recasting, the average of each feature value is calculated for each subject and each activity. A new data frame called tidy is created with the results of this function that has dimensions of 180 x 68. The first column is labeled subjectID, the second is labeled activity followed by the average for each feature variable in the last 66 columns.     
 
-9.) After passing the data through this function, the activity factors are in a different order. Hence, they are reordered to the original order found in activity_labels.txt and then the data frame is ordered first by subject and then by the factor order.     
+9. After passing the data through this function, the activity factors are in a different order. Hence, they are reordered to the original order found in activity_labels.txt and then the data frame is ordered first by subject and then by the factor order.     
 
-10.) Lastly, a file called tidy_data_with_averages.txt is written that contains the data frame named tidy.
+10. Lastly, a file called tidy_data_with_averages.txt is written that contains the data frame named tidy.
 
 
 
