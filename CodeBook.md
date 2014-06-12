@@ -23,7 +23,7 @@ The run_analysis.R script modfies the data in the following ways:
 
 7. The properly labeled subject, Y_df and X_df data frames are combined using the cbind function to yeild a data frame with the dimensions 10299 x 68 called combined. This table begins with the subject IDs in the first column, activity names listed in part 6 in the second column and 66 columns of feature names in the general format: feature-mean-x, feature-std-y, etc.     
 
-8. The combined data frame is passed to a function that melts and recasts the data. During the recasting, the average of each feature value is calculated for each subject and each activity. A new data frame called tidy is created with the results of this function that has dimensions of 180 x 68. The first column is labeled subjectID, the second is labeled activity followed by the average for each feature variable in the last 66 columns.     
+8. The combined data frame is passed to a function that melts and recasts the data. During the recasting, the average of each feature value is calculated for each subject and each activity. A new data frame called tidy is created with the results of this function that has dimensions of 181 x 68, where 181 includes the column header and 180 rows for each subject and each activity. The 68 columns include the first column is labeled subjectID, the second is labeled activity followed by the average for each feature variable in the last 66 columns.     
 
 9. After passing the data through this function, the activity factors are in a different order. Hence, they are reordered to the original order found in activity_labels.txt and then the data frame is ordered first by subject and then by the factor order.     
 
